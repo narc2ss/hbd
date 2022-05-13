@@ -1,10 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "build"),
@@ -13,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: "babel-loader",
       },
@@ -36,9 +37,10 @@ module.exports = {
       filename: "./index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   devServer: {
     host: "localhost",
