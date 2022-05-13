@@ -10,7 +10,6 @@ module.exports = {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "build"),
   },
-
   module: {
     rules: [
       {
@@ -39,11 +38,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
   ],
-  resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
-  },
   devServer: {
     host: "localhost",
     port: 3000,
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 };
